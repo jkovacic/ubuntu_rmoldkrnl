@@ -74,7 +74,7 @@ sub remove_old_kernels
 
 
     # Root privileges are required to remove old kernel images
-    eval { 0 == $< } || die "The script trequires root privileges!\n";
+    eval { 0 == $< } || die "The script requires root privileges!\n";
 
 
 
