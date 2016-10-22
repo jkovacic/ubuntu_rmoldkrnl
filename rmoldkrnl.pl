@@ -114,7 +114,8 @@ sub remove_old_kernels
         # From the matching lines extract the kernel version
         my $ver = $3;
 
-        # If the version is greater than the current one, the OS should be restarted first
+        # If the version is more recent than the current one,
+        # the OS should be restarted first
         eval { 1 != cmp_versions($ver, $version) } ||
                   die "Reboot the system and run this script again!\n";
 
@@ -205,16 +206,9 @@ sub cmp_versions($$)
 
     # Default value of $retval for the case when $a==$b
     my $retval = 0;
-    for ( my $i=0; $i<4; ++$i )
+    for ( my $i=0; 0==$retval && $i<4; ++$i )
     {
-        if ( $arra[$i] ne $arrb[$i] )
-        {
-            # if elements at the position $i are not equal
-            # compare them and exit the loop immmediately.
-
-            $retval = ( $arra[$i] < $arrb[$i] ) ? -1 : 1;
-            last;
-        }
+        $retval = $arra[$i] <=> $arrb[$i];
     }
 
     return $retval;
