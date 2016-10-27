@@ -185,7 +185,7 @@ sub cmp_versions($$)
 
     # check that at least two arguments are passed
     my $N = @_;
-    eval { 2 <= $N } || die "Invalid number of parameters!";
+    eval { 2 <= $N } || die "Invalid number of parameters!\n";
 
     # "Extract" both arguments
     my $a = $_[0];
@@ -195,9 +195,9 @@ sub cmp_versions($$)
     my $re_ver = qr/(\d+)\.(\d+)\.(\d+)\-(\d+)/;
 
     # and extract the numeric values and store them into arrays @arra nad @arrb:
-    $a =~ m/$re_ver/ || die "Invalid format!";
+    $a =~ m/$re_ver/ || die "Invalid format!\n";
     my @arra = ( $1, $2, $3, $4 );
-    $b =~ m/$re_ver/ || die "Invalid format!";
+    $b =~ m/$re_ver/ || die "Invalid format!\n";
     my @arrb = ( $1, $2, $3, $4 );
 
     # The for loop iterates both arrays until elements at the same positions
